@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Junjie Peng | Computer Vision & Data Science Portfolio</title>
+    <!-- Google Fonts & simple CSS reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafb;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* navigation */
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.92);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #334155;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        /* sections */
+        section {
+            padding: 64px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+            border-left: 5px solid #2563eb;
+            padding-left: 20px;
+        }
+        /* home / headline */
+        .home-content {
+            background: white;
+            border-radius: 28px;
+            padding: 48px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        .headline {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e293b, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .tag {
+            background: #eef2ff;
+            color: #1e40af;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        /* about & skills grid */
+        .about-text {
+            background: white;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .strengths {
+            margin-top: 20px;
+            list-style: none;
+        }
+        .strengths li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+        .strengths li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: space-between;
+        }
+        .skill-cat {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .skill-cat h3 {
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: inline-block;
+        }
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .skill-badge {
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        /* project cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .project-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #eef2ff;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .project-date {
+            font-size: 0.8rem;
+            font-weight: normal;
+            color: #5b6e8c;
+        }
+        .project-detail {
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+        .detail-label {
+            font-weight: 700;
+            color: #0f172a;
+            display: inline-block;
+            width: 90px;
+        }
+        .contribution {
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 16px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            border-left: 3px solid #2563eb;
+        }
+        /* resume & contact */
+        .resume-card, .contact-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #1d4ed8;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .contact-links a {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            padding: 28px;
+            font-size: 0.8rem;
+            color: #5b6e8c;
+        }
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .home-content {
+                padding: 28px 20px;
+            }
+            .headline {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="logo">Junjie Peng</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Home section -->
+    <section id="home">
+        <div class="home-content">
+            <div class="headline">Aspiring Computer Vision Engineer / Data Scientist<br> turning visual data into actionable insights with deep learning.</div>
+            <div class="tags">
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Python / PyTorch</span>
+                <span class="tag">YOLO / ViT</span>
+                <span class="tag">ML for Business</span>
+                <span class="tag">Data Science</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; background: white; border-radius: 28px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+        <!-- 图片区域 -->
+        <div style="flex: 0 0 160px; text-align: center;">
+            <img src=".jpg" alt="Junjie Peng" style="width: 100%; max-width: 160px; border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 3px solid white;">
+        </div>
+        <!-- 文字区域 -->
+        <div style="flex: 1;">
+            <p>I am a final-year MSc in Data Science student at Lingnan University (expected graduation July 2026), passionate about building intelligent vision systems that solve real-world problems. My research focuses on video stream monitoring for urban places, and I have hands-on experience in image classification, object detection, and multi-modal regression.</p>
+            <ul class="strengths" style="margin-top: 16px;">
+                <li>End-to-end computer vision pipeline design (data processing → model training → deployment)</li>
+                <li>Model optimization & loss function engineering (per-class Focal Loss, two-stage training, TTA)</li>
+                <li>Cross-functional collaboration & project leadership – from research to measurable outcomes</li>
+                <li>Fast learner with a humorous, team-oriented mindset, always eager to explore SOTA techniques</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>Education:</strong> Lingnan University, MSc in Data Science (Sep 2025 – Jul 2026) · Core courses: Deep Learning, Programming for DS, Computer Vision, Statistics for DS.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-cat"><h3>💻 Technical</h3><div class="skill-items"><span class="skill-badge">Python</span><span class="skill-badge">SQL</span><span class="skill-badge">Deep Learning</span><span class="skill-badge">Computer Vision</span><span class="skill-badge">Statistics</span><span class="skill-badge">Time Series</span></div></div>
+            <div class="skill-cat"><h3>📊 Business</h3><div class="skill-items"><span class="skill-badge">Problem Framing</span><span class="skill-badge">Metrics (AUC/F1/R²)</span><span class="skill-badge">A/B Testing</span><span class="skill-badge">Data Storytelling</span><span class="skill-badge">Reporting</span></div></div>
+            <div class="skill-cat"><h3>🛠️ Tools</h3><div class="skill-items"><span class="skill-badge">PyTorch/TensorFlow</span><span class="skill-badge">pandas/NumPy</span><span class="skill-badge">OpenCV</span><span class="skill-badge">scikit-learn</span><span class="skill-badge">YOLOv8</span><span class="skill-badge">DINOv3</span><span class="skill-badge">Power BI</span></div></div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1: Eye disease -->
+            <div class="project-card">
+                <div class="project-title">Intelligent Eye Disease Recognition <span class="project-date">Jan 2025 – May 2025</span></div>
+                <div class="project-detail"><span class="detail-label">Problem:</span> Multi-label classification of 8 eye diseases from retinal images to assist diagnosis.</div>
+                <div class="project-detail"><span class="detail-label">Data:</span> ODIR-5K dataset (5,000 fundus images).</div>
+                <div class="project-detail"><span class="detail-label">Approach:</span> Dual-image stitching + Gaussian blur; per-class Focal Loss; compared VGG19, ViT, ConvNeXt; ablation studies.</div>
+                <div class="project-detail"><span class="detail-label">Outcome:</span> ConvNeXt + per-class Focal Loss → <strong>AUC 0.951, F1 0.864</strong> (minor-class F1 +10%).</div>
+                <div class="contribution"><strong>My contribution (individual):</strong> Full pipeline design, loss implementation, all experiments.</div>
+                <div style="margin-top: 12px;"><a href="https://github.com/jslmmfboom-coder/Per-class-Focal-Loss-for-Multi-label-Eye-Disease-Classification-from-Fundus-Images.git" style="color:#2563eb;">🔗 Code (GitHub)</a> &nbsp;</div>
+            </div>
+            <!-- Project 2: CSIRO -->
+            <div class="project-card">
+                <div class="project-title">CSIRO Pasture Biomass Prediction <span class="project-date">Sep 2025 – Feb 2026</span></div>
+                <div class="project-detail"><span class="detail-label">Problem:</span> Predict 5 biomass indicators from pasture images + auxiliary data for grazing management.</div>
+                <div class="project-detail"><span class="detail-label">Data:</span> CSIRO pasture dataset with NDVI, height, species, date.</div>
+                <div class="project-detail"><span class="detail-label">Approach:</span> ViT-Huge (DINOv3) dual-stream + FiLM fusion; two-stage training; GroupKFold CV, TTA, heuristic post-processing.</div>
+                <div class="project-detail"><span class="detail-label">Outcome:</span> Weighted R² = <strong>0.71</strong>; biologically consistent predictions.</div>
+                <div class="contribution"><strong>My contribution (group of 3):</strong> Project lead, dual-stream fusion design, two-stage training strategy, TTA implementation.</div>
+                <div style="margin-top: 12px;"><a href="https://github.com/jslmmfboom-coder/A-multi-objective-prediction-model-for-pasture-biomass-based-on-dual-view-DINOv3-and-FiLM.git" style="color:#2563eb;">🔗 Code (GitHub)</a></div>
+            </div>
+            <!-- Project 3: Urban video monitoring -->
+            <div class="project-card">
+                <div class="project-title">Real-time Video Stream Monitoring <span class="project-date">Jan 2026 – present</span></div>
+                <div class="project-detail"><span class="detail-label">Problem:</span> Detect & track pedestrians/vehicles, identify abnormal events in urban streets.</div>
+                <div class="project-detail"><span class="detail-label">Data:</span> VIRAT dataset + custom street footage.</div>
+                <div class="project-detail"><span class="detail-label">Approach:</span> YOLOv8x + tracking, video stabilization, trajectory-based anomaly detection (speed, collision). Hourly flow & crowd analysis.</div>
+                <div class="project-detail"><span class="detail-label">Outcome:</span> Expected mAP >90%, anomaly detection rate >90%; full statistical reports.</div>
+                <div class="contribution"><strong>My contribution (group of 4):</strong> System architecture, YOLOv8x integration, anomaly module, traffic/crowd analytics.</div>
+            </div>
+        </div>
+        <p style="margin-top: 24px; font-size: 0.85rem; text-align: center;">✔️ Each project includes: Problem, Data, Approach, Outcome/Impact, and clear personal contribution.</p>
+    </section>
+
+    <!-- Resume / CV -->
+    <section id="resume">
+        <h2 class="section-title">Resume / CV</h2>
+        <div class="resume-card">
+            <p>📄 Download my full resume (PDF) or view a short summary below.</p>
+            <a href="resume.pdf" class="btn" download>⬇️ Download Resume (PDF)</a>
+            <div style="margin-top: 28px; text-align: left; background: #f8fafc; padding: 20px; border-radius: 20px;">
+                <p><strong>Education:</strong> MSc in Data Science, Lingnan University (2025–2026, expected July 2026)</p>
+                <p><strong>Publications & IP:</strong> 2 EI-conference papers (image segmentation, data mining), 2 software copyrights, 1 utility patent pending</p>
+                <p><strong>Certifications:</strong> IELTS 6.5, National Computer Rank Exam (Python – Excellent), Alibaba Cloud ACA</p>
+                <p><strong>Awards:</strong> Excellent Student Award, 2× Second-class scholarship, Young-Storm Microsoft Challenge (Southern China 3rd prize)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-card">
+            <p>✉️ <strong>Email:</strong> <a href="mailto:junjiepeng@ln.hk">junjiepeng@ln.hk</a> (primary)</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/jun-jie-peng-223537382/">🔗 My LinkedIn</a>
+                <a href="https://github.com/jslmmfboom-coder?tab=repositories">🐙 My GitHub </a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.85rem;">📞 <strong>Phone:</strong> +852 84955024</p>
+        </div>
+    </section>
+</main>
+<footer>
+    © 2026 Junjie Peng · Computer Vision & Data Science portfolio.
+</footer>
+</body>
+</html>
